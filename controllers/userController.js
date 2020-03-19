@@ -27,7 +27,7 @@ exports.createUser = async (req, res) => {
     // Create new User
     user = new User(req.body)
 
-    // Hash to the password
+    // Hashing the password
     const salt = await bcryptjs.genSalt(10);
     user.password = await bcryptjs.hash(password, salt);
 

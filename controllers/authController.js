@@ -45,7 +45,7 @@ exports.authenticateUser = async (req, res) => {
         token
       });
     });
-    
+
   } catch (error) {
     console.log(error);
   }
