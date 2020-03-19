@@ -36,3 +36,30 @@ exports.createTask = async (req, res) => {
     res.status(500).send('Error');
   }
 };
+
+// Get all task by project
+exports.getTasks = async (req, res) => {
+
+  try {
+    // Extract project
+    const { project } = req.body;
+
+    const existProject = await Project.findById(project);
+    if (!existProject) {
+      return res.status(404).json({ msg: 'Project not found' });
+    }
+
+    // Check if project is related with user
+    if (existProject.creator.toString() !== req.user.id) {
+      return res.status(401).json({ msg: 'Unauthorized' });
+    }
+    
+    // Get tasks by project
+    const tasks = await Task.find({ project });
+    res.json({ tasks });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Error');
+  }
+};
