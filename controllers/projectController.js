@@ -23,7 +23,7 @@ exports.createProject = async (req, res) => {
 
   } catch (error) {
     console.log(error);
-    res.status(500).send('Error');
+    res.status(500).json({ msg: 'Server Error' });
   }
 };
 
@@ -34,7 +34,7 @@ exports.getProjects = async (req, res) => {
     res.status(200).json({ projects });
 
   } catch (error) {
-    res.status(500).send('Error');
+    res.status(500).json({ msg: 'Server Error' });
   }
 };
 
@@ -75,7 +75,7 @@ exports.updateProject = async (req, res) => {
 
   } catch (error) {
     console.log(error);
-    res.status(500).send('Error');
+    res.status(500).json({ msg: 'Server Error' });
   }
 };
 
@@ -102,6 +102,6 @@ exports.deleteProject = async (req, res) => {
 
   } catch (error) {
     console.log(error);
-    res.status(500).send('Error');
+    res.status(500).json({ msg: 'Server Error' });
   }
 };
