@@ -48,6 +48,22 @@ exports.authenticateUser = async (req, res) => {
 
   } catch (error) {
     console.log(error);
+    res.status(500).json({ msg: 'Server error' });
   }
 
+};
+
+// Get user logged
+exports.getUserLogged = async (req, res) => {
+  try {
+
+    const user = await User.findById(req.user.id);
+    res.status(200).json(user);
+
+  } catch (error) {
+
+    console.log(error);
+    res.status(500).json({ msg: 'Server error' });
+
+  }
 };
