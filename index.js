@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json({ extended: true }));
 
 // App Port
-const PORT = process.env.PORT || 4000;
+const port = process.env.port || 4000;
 
 // Import Routes
 app.use('/api/users', require('./routes/users'));
@@ -29,6 +29,6 @@ app.get('/', (req, res) => {
 })
 
 // Start App
-app.listen(PORT, () => {
-  console.log(`Listening on Port ${PORT}`);
+app.listen(port, '0.0.0.0' ,() => {
+  console.log(`Listening on Port ${port}`);
 })
